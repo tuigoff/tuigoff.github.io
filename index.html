@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tuigoff — the TUI Go Friendly Framework</title>
+<meta name="description" content="Terminal UIs in Go that feel good to use. The house style behind DataTug, SpecScore, inGitDB, CodeGrapher, OVDB and Sneat.">
+<style>
+:root{
+  --canvas:#080d12; --surface:#101820; --raised:#16212b; --line:#293a48;
+  --focus:#20a4ff; --attn:#e9c34b; --ready:#3bd17f; --text:#d9e2ea; --dim:#8fa0ae;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--text);font:16px/1.6 var(--sans)}
+a{color:var(--focus);text-decoration:none} a:hover{text-decoration:underline}
+main{max-width:1040px;margin:0 auto;padding:0 16px}
+nav{display:flex;align-items:center;gap:20px;padding:18px 0;font-family:var(--mono);font-size:14px}
+nav .brand{color:var(--focus);font-weight:700;margin-right:auto}
+nav a{color:var(--dim)} nav a:hover{color:var(--text);text-decoration:none}
+.hero{padding:56px 0 40px}
+.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:0 0 14px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--focus)}
+.hero p{max-width:640px;color:var(--dim);font-size:19px;margin:0 0 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:14px;padding:10px 16px;border-radius:6px;border:1px solid var(--line);color:var(--text)}
+.btn.primary{background:var(--focus);border-color:var(--focus);color:#04121c;font-weight:700}
+.btn:hover{text-decoration:none;border-color:var(--focus)}
+.term{background:var(--surface);border-radius:10px;overflow:hidden;font:13px/1.5 var(--mono);box-shadow:0 18px 50px #0008;margin:8px 0}
+.term .top{padding:9px 14px;border-bottom:1px solid var(--line);display:flex;gap:16px;background:var(--canvas)}
+.term .top b{color:var(--focus)} .term .top span{color:var(--attn)}
+.term .body{display:grid;grid-template-columns:200px 1fr;gap:8px;padding:8px;background:var(--canvas)}
+.term .side{background:var(--surface);padding:10px 12px}
+.term .main{background:var(--canvas);padding:10px 14px}
+.sel{background:#0d5f9d;padding:1px 6px;border-radius:3px}
+.cnt b{color:#fff} .cnt i{font-style:normal;color:#71808c}
+.dim{color:var(--dim)} .ok{color:var(--ready)} .warn{color:var(--attn)}
+.term .status{padding:8px 14px;display:flex;gap:18px;color:var(--dim);background:var(--canvas)}
+.search{border-bottom:1px solid var(--focus);padding:4px 0;margin-bottom:10px}
+.ear{display:inline-block;background:var(--raised);padding:1px 9px;border-radius:8px 8px 0 0;font-weight:700}
+.bubble{background:var(--raised);padding:8px 10px;border-radius:0 5px 5px 5px}
+section{padding:44px 0}
+h2{font-size:26px;margin:0 0 18px;letter-spacing:-.01em}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:var(--surface);border-radius:8px;padding:16px}
+.card b{display:block;margin-bottom:6px}
+.card p{margin:0;color:var(--dim);font-size:14.5px}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{background:var(--surface);border-radius:8px;padding:10px;font:12px var(--mono);color:var(--dim);width:118px}
+.sw i{display:block;height:40px;border-radius:5px;margin-bottom:8px;border:1px solid var(--line)}
+pre{background:var(--surface);border-radius:8px;padding:16px;overflow:auto;font:14px/1.5 var(--mono);margin:0 0 12px}
+.used{display:flex;flex-wrap:wrap;gap:10px}
+.used span{font-family:var(--mono);font-size:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--dim)}
+footer{padding:30px 0 50px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:820px){.grid4{grid-template-columns:1fr 1fr}.term .body{grid-template-columns:1fr}}
+@media(max-width:520px){.grid4{grid-template-columns:1fr}nav{gap:14px}}
+</style>
+</head>
+<body>
+<main>
+<nav>
+  <span class="brand">tuigoff</span>
+  <a href="#style">Style</a>
+  <a href="#start">Get started</a>
+  <a href="https://github.com/tuigoff/tuigoff">GitHub</a>
+</nav>
+
+<div class="hero">
+  <h1>Meet Mr. Tuigoff:<br>the <em>TUI Go Friendly</em> Framework.</h1>
+  <p>Terminal UIs in Go that feel good to use. The house style behind DataTug, SpecScore, inGitDB, CodeGrapher, OVDB and Sneat.</p>
+  <div class="cta">
+    <a class="btn primary" href="#start">go get github.com/tuigoff/tuigoff</a>
+    <a class="btn" href="https://github.com/tuigoff/tuigoff/blob/main/docs/design-language.md">Read the design language</a>
+  </div>
+</div>
+
+<div class="term" role="img" aria-label="Sample Tuigoff screen: explorer tree, chat area and status bar">
+  <div class="top"><b>App</b><span>Project: Chinook Demo ▾</span></div>
+  <div class="body">
+    <div class="side">
+      <div class="search">⌕ invo<span class="dim">█</span></div>
+      <div>▾ ◉ Databases <span class="cnt"><b>1</b><i>/3</i></span></div>
+      <div>&nbsp;&nbsp;▾ Chinook (SQLite)</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;▾ Tables <span class="cnt"><b>2</b><i>/11</i></span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sel">▦ Invoice</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▦ InvoiceLine</div>
+      <div>▸ ◇ Environments (5)</div>
+    </div>
+    <div class="main">
+      <div class="dim">10:24 &nbsp;You</div>
+      <div class="bubble">Show me the top customers by invoice total</div>
+      <br>
+      <div class="ear">App</div>
+      <div class="bubble">Top 3 customers:<br>1 &nbsp;Helena Holý &nbsp;&nbsp;<span class="warn">49.62</span><br>2 &nbsp;François Tremblay &nbsp;<span class="warn">47.62</span><br>3 &nbsp;Astrid Gruber &nbsp;<span class="warn">46.62</span></div>
+    </div>
+  </div>
+  <div class="status"><span class="ok">● Ready</span><span>2 tables</span><span style="margin-left:auto">↑↓ navigate | Enter select | ? help</span></div>
+</div>
+
+<section id="style">
+  <h2>A calm, dense look</h2>
+  <div class="grid4">
+    <div class="card"><b>Surfaces before boxes</b><p>Side panels are borderless and a shade lighter than the canvas.</p></div>
+    <div class="card"><b>Borders mean structure</b><p>Space and background separate regions. Rules only where needed.</p></div>
+    <div class="card"><b>Colour means state</b><p>Blue is focus, yellow is attention, green is ready.</p></div>
+    <div class="card"><b>Dense, not cramped</b><p>One-cell gaps. Tables may be tight; controls get room.</p></div>
+  </div>
+  <br>
+  <div class="swatches">
+    <div class="sw"><i style="background:#080d12"></i>Canvas<br>#080D12</div>
+    <div class="sw"><i style="background:#101820"></i>Surface<br>#101820</div>
+    <div class="sw"><i style="background:#16212b"></i>Raised<br>#16212B</div>
+    <div class="sw"><i style="background:#293a48"></i>Border<br>#293A48</div>
+    <div class="sw"><i style="background:#20a4ff"></i>Focus<br>#20A4FF</div>
+    <div class="sw"><i style="background:#e9c34b"></i>Attention<br>#E9C34B</div>
+    <div class="sw"><i style="background:#3bd17f"></i>Ready<br>#3BD17F</div>
+  </div>
+</section>
+
+<section id="start">
+  <h2>Get started</h2>
+  <pre>go get github.com/tuigoff/tuigoff</pre>
+  <p class="dim">Built on Bubble Tea v2, Bubbles and Lip Gloss: a navigation shell, a data grid and a widget kit that follow the design language above.</p>
+</section>
+
+<section>
+  <h2>Used by</h2>
+  <div class="used"><span>DataTug</span><span>SpecScore</span><span>inGitDB</span><span>CodeGrapher</span><span>OVDB</span><span>Sneat</span></div>
+</section>
+
+<footer>
+  The name: TUI + Go + the Russian “-off” surname ending, as in Smirnoff.
+  Open source on <a href="https://github.com/tuigoff/tuigoff">GitHub</a>.
+</footer>
+</main>
+</body>
+</html>
