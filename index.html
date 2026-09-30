@@ -36,7 +36,6 @@ h3{font:600 13px var(--mono);margin:22px 0 10px;text-transform:uppercase;letter-
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .btn{overflow-wrap:anywhere;font-family:var(--mono);font-size:14px;padding:10px 16px;border-radius:6px;border:1px solid var(--line);color:var(--text)}
 .btn.primary{background:var(--focus);border-color:var(--focus);color:var(--btn-ink);font-weight:700}
-.themebtn{background:none;cursor:pointer}
 .btn:hover{text-decoration:none;border-color:var(--focus)}
 .term{color:var(--text);background:var(--surface);border-radius:10px;overflow:hidden;font:13px/1.5 var(--mono);box-shadow:0 18px 50px var(--shadow);margin:8px 0}
 .term .top{padding:9px 14px;border-bottom:1px solid var(--line);display:flex;gap:16px;background:var(--canvas)}
@@ -66,7 +65,8 @@ pre{background:var(--surface);border-radius:8px;padding:16px;overflow:auto;font:
 footer{padding:30px 0 50px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
 @media(max-width:820px){.grid4{grid-template-columns:1fr 1fr}.term .body{grid-template-columns:1fr}}
 @media(max-width:520px){.grid4{grid-template-columns:1fr}nav{gap:14px}}
-nav .themebtn{padding:5px 11px;color:var(--dim)}
+.tbtn{margin-left:auto;font:inherit;color:var(--dim);background:none;border:1px solid var(--line);border-radius:4px;padding:0 8px;cursor:pointer}
+.tbtn:hover,.tbtn:focus-visible{color:var(--focus);border-color:var(--focus);outline:none}
 </style>
 <script>
 (function(){var t;try{t=localStorage.getItem('tuigoff-theme')}catch(e){}
@@ -81,7 +81,6 @@ document.documentElement.dataset.theme=t;})();
   <a href="#style">Style</a>
   <a href="#start">Get started</a>
   <a href="https://github.com/tuigoff/tuigoff">GitHub</a>
-  <button class="btn themebtn" id="theme" type="button" aria-label="Switch colour theme">◐ Theme</button>
 </nav>
 
 <div class="hero">
@@ -94,7 +93,7 @@ document.documentElement.dataset.theme=t;})();
 </div>
 
 <div class="term" role="img" aria-label="Sample Tuigoff screen: explorer tree, chat area and status bar">
-  <div class="top"><b>App</b><span>Project: Chinook Demo ▾</span></div>
+  <div class="top"><b>App</b><span>Project: Chinook Demo ▾</span><button id="theme" class="tbtn" type="button" aria-label="Switch colour theme">◐ Theme</button></div>
   <div class="body">
     <div class="side">
       <div class="search">⌕ invo<span class="dim">█</span></div>
