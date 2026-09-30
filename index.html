@@ -66,6 +66,10 @@ h2{font-size:26px;margin:0 0 18px;letter-spacing:-.01em}
 .swatches{display:flex;flex-wrap:wrap;gap:10px}
 .sw{background:var(--surface);border-radius:8px;padding:10px;font:12px var(--mono);color:var(--dim);width:118px}
 .sw i{display:block;height:40px;border-radius:5px;margin-bottom:8px;border:1px solid var(--line)}
+.toks{background:var(--surface);border-radius:8px;padding:6px 14px;font:13px var(--mono);max-width:520px}
+.tok{display:grid;grid-template-columns:110px 1fr 1fr;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
+.tok.head{border-top:0;color:var(--dim)}
+.tok i{display:inline-block;width:22px;height:14px;border-radius:3px;border:1px solid var(--line);vertical-align:middle;margin-right:8px}
 pre{background:var(--surface);border-radius:8px;padding:16px;overflow:auto;font:14px/1.5 var(--mono);margin:0 0 12px}
 .used{display:flex;flex-wrap:wrap;gap:10px}
 .used span{font-family:var(--mono);font-size:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--dim)}
@@ -140,25 +144,15 @@ document.documentElement.dataset.theme=t;})();
     <div class="card"><b>Dense, not cramped</b><p>One-cell gaps. Tables may be tight; controls get room.</p></div>
   </div>
   <br>
-  <h3 class="dim">Dark</h3>
-  <div class="swatches">
-    <div class="sw"><i style="background:#080d12"></i>Canvas<br>#080D12</div>
-    <div class="sw"><i style="background:#101820"></i>Surface<br>#101820</div>
-    <div class="sw"><i style="background:#16212b"></i>Raised<br>#16212B</div>
-    <div class="sw"><i style="background:#293a48"></i>Border<br>#293A48</div>
-    <div class="sw"><i style="background:#20a4ff"></i>Focus<br>#20A4FF</div>
-    <div class="sw"><i style="background:#e9c34b"></i>Attention<br>#E9C34B</div>
-    <div class="sw"><i style="background:#3bd17f"></i>Ready<br>#3BD17F</div>
-  </div>
-  <h3 class="dim">Light</h3>
-  <div class="swatches">
-    <div class="sw"><i style="background:#f4f6f8"></i>Canvas<br>#F4F6F8</div>
-    <div class="sw"><i style="background:#e7ecf0"></i>Surface<br>#E7ECF0</div>
-    <div class="sw"><i style="background:#dbe3ea"></i>Raised<br>#DBE3EA</div>
-    <div class="sw"><i style="background:#c2cdd6"></i>Border<br>#C2CDD6</div>
-    <div class="sw"><i style="background:#0a7fd6"></i>Focus<br>#0A7FD6</div>
-    <div class="sw"><i style="background:#9a6b00"></i>Attention<br>#9A6B00</div>
-    <div class="sw"><i style="background:#178a4c"></i>Ready<br>#178A4C</div>
+  <p class="dim">Light and dark are both first-class. The theme follows the terminal's real background, and card fills are that background tinted toward a role hue, so they suit any terminal.</p>
+  <div class="toks">
+    <div class="tok head"><b>Token</b><span>Dark</span><span>Light</span></div>
+    <div class="tok"><b>Focus</b><span><i style="background:#6FB1FF"></i>#6FB1FF</span><span><i style="background:#1A5FC7"></i>#1A5FC7</span></div>
+    <div class="tok"><b>Muted</b><span><i style="background:#A3A8B1"></i>#A3A8B1</span><span><i style="background:#54544C"></i>#54544C</span></div>
+    <div class="tok"><b>Accent</b><span><i style="background:#E8C25A"></i>#E8C25A</span><span><i style="background:#734B00"></i>#734B00</span></div>
+    <div class="tok"><b>Error</b><span><i style="background:#FF6B6B"></i>#FF6B6B</span><span><i style="background:#B3261E"></i>#B3261E</span></div>
+    <div class="tok"><b>Bar</b><span><i style="background:#2E3440"></i>#2E3440</span><span><i style="background:#D8DCE6"></i>#D8DCE6</span></div>
+    <div class="tok"><b>Bar text</b><span><i style="background:#ECEFF4"></i>#ECEFF4</span><span><i style="background:#101820"></i>#101820</span></div>
   </div>
 </section>
 
