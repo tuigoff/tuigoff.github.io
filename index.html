@@ -49,6 +49,13 @@ h3{font:600 13px var(--mono);margin:22px 0 10px;text-transform:uppercase;letter-
 .term .status{padding:8px 14px;display:flex;gap:18px;color:var(--dim);background:var(--canvas)}
 .search{border-bottom:1px solid var(--focus);padding:4px 0;margin-bottom:10px}
 .ear{display:inline-block;background:var(--raised);padding:1px 9px;border-radius:8px 8px 0 0;font-weight:700}
+.grid{border-collapse:collapse;margin-top:8px;width:100%;font-size:12.5px}
+.grid th{background:var(--line);color:var(--text);font-weight:700;text-align:left}
+.grid td,.grid th{border:1px solid var(--line);padding:2px 8px}
+.grid td:first-child,.grid td:last-child{text-align:right;color:var(--attn)}
+.grid th:first-child,.grid th:last-child{text-align:right}
+.grid tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--canvas) 55%,transparent)}
+.main{overflow-x:auto}
 .bubble{background:var(--raised);padding:8px 10px;border-radius:0 5px 5px 5px}
 section{padding:44px 0}
 h2{font-size:26px;margin:0 0 18px;letter-spacing:-.01em}
@@ -109,7 +116,16 @@ document.documentElement.dataset.theme=t;})();
       <div class="bubble">Show me the top customers by invoice total</div>
       <br>
       <div class="ear">App</div>
-      <div class="bubble">Top 3 customers:<br>1 &nbsp;Helena Holý &nbsp;&nbsp;<span class="warn">49.62</span><br>2 &nbsp;François Tremblay &nbsp;<span class="warn">47.62</span><br>3 &nbsp;Astrid Gruber &nbsp;<span class="warn">46.62</span></div>
+      <div class="bubble">Top 3 customers by invoice total:
+        <table class="grid">
+          <thead><tr><th>#</th><th>CustomerId</th><th>CustomerName</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>58</td><td>Helena Holý</td><td>49.62</td></tr>
+            <tr><td>2</td><td>30</td><td>François Tremblay</td><td>47.62</td></tr>
+            <tr><td>3</td><td>46</td><td>Astrid Gruber</td><td>46.62</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div class="status"><span class="ok">● Ready</span><span>2 tables</span><span style="margin-left:auto">↑↓ navigate | Enter select | ? help</span></div>
